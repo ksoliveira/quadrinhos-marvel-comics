@@ -1,0 +1,25 @@
+@font-face {
+    font-family: 'RobotoCondensed';
+    src: url("https://i.annihil.us/u/prod/marvel/font/roboto/RobotoCondensed-Regular.ttf") format("truetype")
+}
+
+@font-face {
+    font-family: 'RobotoCondensed Bold';
+    src: url("https://i.annihil.us/u/prod/marvel/font/roboto/RobotoCondensed-Bold.ttf") format("truetype")
+}
+
+@font-face {
+    font-family: 'Roboto';
+    src: url("../fonts/Roboto-Regular.ttf") format("truetype")
+}
+
+@font-face {
+    font-family: 'Roboto Bold';
+    src: url("https://i.annihil.us/u/prod/marvel/font/roboto/Roboto-Bold.ttf") format("truetype")
+}
+
+@font-face {
+    font-family: 'Open Sans';
+    src: url("https://i.annihil.us/u/prod/marvel/font/roboto/open-sans-v15-latin-regular.eot?#iefix");
+    src: url("https://i.annihil.us/u/prod/marvel/font/roboto/open-sans-v15-latin-regular.eot?#iefix") format("eot"),url("https://i.annihil.us/u/prod/marvel/font/roboto/open-sans-v15-latin-regular.woff2") format("woff2"),url("https://i.annihil.us/u/prod/marvel/font/roboto/open-sans-v15-latin-regular.woff") format("woff"),url("https://i.annihil.us/u/prod/marvel/font/roboto/open-sans-v15-latin-regular.ttf") format("truetype"),url("https://i.annihil.us/u/prod/marvel/font/roboto/open-sans-v15-latin-regular.svg") format("svg")
+}

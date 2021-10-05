@@ -20,16 +20,23 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
-  it(`should have as title 'quadrinhos-marvel'`, () => {
+  it(`should have as title 'Marvel Comics'`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
-    expect(app.title).toEqual('quadrinhos-marvel');
+    expect(app.title).toEqual('Marvel Comics');
   });
 
-  it('should render title', () => {
+  it('should render title page', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const compiled = fixture.nativeElement;
-    expect(compiled.querySelector('.content span').textContent).toContain('quadrinhos-marvel app is running!');
+    expect(compiled.querySelector('#marvel-comming-soon h1').textContent).toContain('App Marvel Comics');
+  });
+
+  it('should render available date', () => {
+    const fixture = TestBed.createComponent(AppComponent);
+    fixture.detectChanges();
+    const compiled = fixture.nativeElement;
+    expect(compiled.querySelector('#marvel-comming-soon .available-date').textContent).toContain('Available on October 13');
   });
 });
