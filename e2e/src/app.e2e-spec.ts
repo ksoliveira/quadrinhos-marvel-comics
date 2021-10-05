@@ -8,9 +8,14 @@ describe('workspace-project App', () => {
     page = new AppPage();
   });
 
-  it('should display welcome message', async () => {
+  it('should display comming soon message', async () => {
     await page.navigateTo();
-    expect(await page.getTitleText()).toEqual('quadrinhos-marvel app is running!');
+    expect(await page.getTitleText()).toEqual('App Marvel Comics is comming soon.');
+  });
+
+  it('should display available date', async () => {
+    await page.navigateTo();
+    expect(await page.getTitleText()).toEqual('Available on October 13');
   });
 
   afterEach(async () => {

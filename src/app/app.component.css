@@ -1,0 +1,59 @@
+#marvel-comming-soon {
+    padding: 50px 20px;
+}
+
+#marvel-comming-soon h1 {
+    font-size: 36px;
+    line-height: 40px;
+    font-weight: 700;
+    color: #FFFFFF;
+    text-align: center;
+    text-transform: uppercase;
+    font-family: 'RobotoCondensed', Arial, Helvetica, sans-serif;
+    margin: 50px 0 0;
+}
+
+#marvel-comming-soon .marvel-logo {
+    text-align: center;
+}
+
+
+.available-date {
+    font-size: 16px;
+    line-height: 20px;
+    font-family: 'RobotoCondensed', Arial, Helvetica, sans-serif;
+    text-transform: uppercase;
+    color: #fff;
+    margin: 36px 0;
+    position: absolute;
+    width: 200px;
+    bottom: 30px;
+    left: 50%;
+    margin-left: -100px;
+    text-align: center;
+}
+
+.available-date:after,.available-date:before {
+    background-color: #c6a972;
+    content: "";
+    display: block;
+    height: 2px;
+    position: absolute;
+    -webkit-transform: rotate(-45deg) skewX(45deg);
+    transform: rotate(-45deg) skewX(45deg);
+    width: 30px
+}
+
+.available-date:before {
+    left: 53px;
+    top: -8px;
+    -webkit-transform-origin: left bottom;
+    transform-origin: left bottom
+}
+
+.available-date:after {
+    left: -6px;
+    top: calc(100% + 3px);
+    -webkit-transform-origin: right top;
+    transform-origin: right top
+}
