@@ -10,7 +10,7 @@ describe('workspace-project App', () => {
 
   it('should display comming soon message', async () => {
     await page.navigateTo();
-    expect(await page.getTitleText()).toEqual('App Marvel Comics is comming soon.');
+    expect(await page.getTitleText()).toEqual('App Marvel Comics is comming soon');
   });
 
   it('should display available date', async () => {
