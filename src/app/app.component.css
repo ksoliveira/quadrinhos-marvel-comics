@@ -5,7 +5,8 @@
     grid-template-rows: 90px auto 50px;
     height: 100vh;
 }
-header {
+
+#main header {
     display: grid;
     grid-template-columns: 140px auto;
     width: 100%;
@@ -14,7 +15,7 @@ header {
     border-bottom: 1px solid #212121;
 }
 
-nav ul {
+#main nav ul {
     list-style: none;
     margin: 0;
     padding: 0;
@@ -22,7 +23,7 @@ nav ul {
     justify-content: flex-end;
 }
 
-nav ul li {
+#main nav ul li {
     padding-left: 15px;
 }
 
@@ -30,14 +31,14 @@ nav ul li {
     overflow: auto;
 }
 
-footer {
+#main footer {
     width: 100%;
     padding: 20px;
     border-top: 1px solid #212121;
     height: 50px;
 }
 
-footer p {
+#main footer p {
     text-align: center;
     text-transform: uppercase;
     font-size: 10px;
@@ -68,16 +69,16 @@ footer p {
 }
 
 @media (max-width: 480px) {
-    header {
+    #main header {
         grid-template-columns: 40px auto;
     }
 
-    .marvel-logo svg path.p1,
-    .marvel-logo svg path.p2 {
+    #main .marvel-logo svg path.p1,
+    #main .marvel-logo svg path.p2 {
         display: none;
     }
 
-    .marvel-logo svg rect {
+    #main .marvel-logo svg rect {
         width: 37px;
     }
 }
