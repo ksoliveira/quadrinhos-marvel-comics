@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable, of } from 'rxjs';
-import { Comic } from './comic';
+import { Comic } from './objects/comic';
 import { ComicsService } from './comics.service';
 
 @Component({

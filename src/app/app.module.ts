@@ -6,12 +6,14 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ComicsComponent } from './comics/comics.component';
 import { FavoritesComponent } from './comics/favorites/favorites.component';
+import { ComicCardComponent } from './comics/comic-card/comic-card.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ComicsComponent,
-    FavoritesComponent
+    FavoritesComponent,
+    ComicCardComponent
   ],
   imports: [
     BrowserModule,

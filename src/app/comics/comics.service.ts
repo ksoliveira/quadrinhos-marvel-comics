@@ -3,7 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import {catchError, take, tap, map} from 'rxjs/internal/operators';
 import { environment } from 'src/environments/environment';
 import {Observable, of} from 'rxjs/index';
-import { Comic } from './comic';
+import { Comic } from './objects/comic';
 
 @Injectable({
     providedIn: 'root'
