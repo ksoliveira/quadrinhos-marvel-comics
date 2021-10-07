@@ -49,25 +49,6 @@
     color: #CCCCCC;
 }
 
-.header-button {
-    border: none;
-    background-color: transparent;
-    border: 1px solid #FFFFFF;
-    color: #FFFFFF;
-    padding: 18px 20px;
-    font-size: 14px;
-    line-height: 14px;
-    text-transform: uppercase;
-    font-family: 'RobotoCondensed';
-    cursor: pointer;
-}
-
-.header-button:hover,
-.header-button.active {
-    background-color: #ee4a33;
-    border-color: #ee4a33;
-}
-
 .header-button:focus {
     outline: none;
 }
