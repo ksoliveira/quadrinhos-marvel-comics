@@ -1,4 +1,4 @@
-<div *ngIf="comics$ | async as comics;">
+<div id="page-container" *ngIf="comics$ | async as comics;">
     <div *ngFor="let comic of comics">
         <div routerLink='/comics/{{comic.id}}'>
             <app-comic-card

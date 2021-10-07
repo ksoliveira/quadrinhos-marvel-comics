@@ -29,6 +29,10 @@ export class ComicsService {
             }), catchError(this.handleError('find all comics', [])));
     }
 
+    getTotalElements() {
+        return this.totalElements;
+    }
+
     private handleError<T>(operation = 'operation', result?: T): any {
         return (error: any): Observable<T> => {
             console.error(operation, error);
