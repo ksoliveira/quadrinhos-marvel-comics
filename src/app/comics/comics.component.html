@@ -1,4 +1,13 @@
+<app-custom-pagination
+    [collectionSize]="totalElements" 
+    [pageSize]="itemsPerPage"
+    [currentPage]="page" 
+    (pageChange)="loadPage($event)"
+>
+</app-custom-pagination>
+
 <div id="page-container" *ngIf="comics$ | async as comics;">
+
     <div *ngFor="let comic of comics">
         <div routerLink='/comics/{{comic.id}}'>
             <app-comic-card
@@ -11,11 +20,5 @@
         </div>
     </div>
 
-    <custom-pagination *ngIf="promotions.comics > 0 " 
-        [collectionSize]="totalElements" 
-        [pageSize]="itemsPerPage"
-        [currentPage]="page" 
-        (pageChange)="loadPage($event)"
-    >
-    </custom-pagination>
+    
 </div>
