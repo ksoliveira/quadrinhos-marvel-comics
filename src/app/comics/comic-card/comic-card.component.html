@@ -1,0 +1,25 @@
+<div class="card-container">
+    <h1 class="card-container__title">{{title}}</h1>
+
+    <!--div class="card-container__thumbnail">
+        <img src="{{thumbnail.path}}.{{thumbnail.extension}}" />
+    </div-->
+
+    <section class="carousel" aria-label="Gallery" *ngIf="images$ | async as images;">
+        <ol class="carousel__viewport">
+            <li id="carousel__slide1"
+                tabindex="0"
+                class="carousel__slide" *ngFor="let image of images">
+                <img src="{{image.path}}.{{image.extension}}" />
+                <div class="carousel__snapper"></div>
+            </li>
+        </ol>
+    </section>
+
+    <div class="card-container__creators" *ngIf="creators$ | async as creators;">
+        <h1>Creators:</h1>
+        <div class="card-container__creator" *ngFor="let creator of creators">
+            <strong>{{creator.name}}</strong> - {{creator.role}}
+        </div>
+    </div>
+</div>

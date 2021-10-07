@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable, of } from 'rxjs';
+import { Comic } from './objects/comic';
 import { ComicsService } from './comics.service';
 
 @Component({
@@ -7,6 +9,9 @@ import { ComicsService } from './comics.service';
     styleUrls: ['./comics.component.css']
 })
 export class ComicsComponent implements OnInit {
+
+
+    comics$: Observable<Comic[]>;
 
     itemsPerPage = 10;
     totalElements: number;
@@ -29,10 +34,10 @@ export class ComicsComponent implements OnInit {
         this.serviceComics.findAll(this.page, this.itemsPerPage)
             .subscribe(
                 success => {
-                    console.log(success);
+                    this.comics$ = of(success);
                 },
                 error => {
-                    console.log(error);
+                    console.error(error);
                 },
                 () => {
                     // Tirar o loading

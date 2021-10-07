@@ -15,6 +15,10 @@
     border-bottom: 1px solid #212121;
 }
 
+#main > section {
+    padding: 20px;
+}
+
 #main nav ul {
     list-style: none;
     margin: 0;
