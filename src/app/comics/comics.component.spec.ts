@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { ComicsComponent } from './comics.component';
+import { ComicsService } from './comics.service';
 
 describe('ComicsComponent', () => {
   let component: ComicsComponent;
@@ -8,7 +9,13 @@ describe('ComicsComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ComicsComponent ]
+      declarations: [ ComicsComponent ],
+      imports: [
+        HttpClientTestingModule
+      ],
+      providers: [
+        {provide: ComicsService}
+      ]
     })
     .compileComponents();
   });

@@ -26,17 +26,31 @@ describe('AppComponent', () => {
     expect(app.title).toEqual('Marvel Comics');
   });
 
-  it('should render title page', () => {
+  it('should render Comics Button', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const compiled = fixture.nativeElement;
-    expect(compiled.querySelector('#marvel-comming-soon h1').textContent).toContain('App Marvel Comics');
+    expect(compiled.querySelector('#comic-header-link-button').textContent).toContain('Comics');
   });
 
-  it('should render available date', () => {
+  it('should render Favorites Button', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const compiled = fixture.nativeElement;
-    expect(compiled.querySelector('#marvel-comming-soon .available-date').textContent).toContain('Available on October 13');
+    expect(compiled.querySelector('#favorite-header-link-button').textContent).toContain('Favorites');
+  });
+
+  it('should render Marvel SVG logo', () => {
+    const fixture = TestBed.createComponent(AppComponent);
+    fixture.detectChanges();
+    const compiled = fixture.nativeElement;
+    expect(compiled.querySelector('#main header svg')).not.toBeNull();
+  });
+
+  it('should render footer text', () => {
+    const fixture = TestBed.createComponent(AppComponent);
+    fixture.detectChanges();
+    const compiled = fixture.nativeElement;
+    expect(compiled.querySelector('#main footer p').textContent).toContain('Todos os direitos reservados');
   });
 });

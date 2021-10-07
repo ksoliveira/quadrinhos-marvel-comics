@@ -16,20 +16,20 @@ export class ComicsService {
 
     constructor(private http: HttpClient) {}
 
-    findAll(page:number, limit:number) {
-    const comicsEndpoint = this.baseApiUrl + '?limit=' + limit + '&offset=' + page + '&apikey=' + this.apiKey;
+    findAll( page: number, limit: number ): Observable<Comic[]> {
+        const comicsEndpoint = this.baseApiUrl + '?limit=' + limit + '&offset=' + page + '&apikey=' + this.apiKey;
 
-    return this.http.get<Comic[]>(comicsEndpoint)
-        .pipe(map((result: any) => {
-            if (result.data && result.data.results) {
-                this.totalElements = result.data.total;
-                return result.data.results;
-            }
-            return result;
-        }), catchError(this.handleError('find all comics', [])));
+        return this.http.get<Comic[]>(comicsEndpoint)
+            .pipe(map((result: any) => {
+                if (result.data && result.data.results) {
+                    this.totalElements = result.data.total;
+                    return result.data.results;
+                }
+                return result;
+            }), catchError(this.handleError('find all comics', [])));
     }
 
-    private handleError<T>(operation = 'operation', result?: T) {
+    private handleError<T>(operation = 'operation', result?: T): any {
         return (error: any): Observable<T> => {
             console.error(operation, error);
             return of(result as T);
