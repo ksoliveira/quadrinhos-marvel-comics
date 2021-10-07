@@ -7,13 +7,15 @@ import { AppComponent } from './app.component';
 import { ComicsComponent } from './comics/comics.component';
 import { FavoritesComponent } from './comics/favorites/favorites.component';
 import { ComicCardComponent } from './comics/comic-card/comic-card.component';
+import { CustomPaginationComponent } from './comics/custom-pagination/custom-pagination.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ComicsComponent,
     FavoritesComponent,
-    ComicCardComponent
+    ComicCardComponent,
+    CustomPaginationComponent
   ],
   imports: [
     BrowserModule,

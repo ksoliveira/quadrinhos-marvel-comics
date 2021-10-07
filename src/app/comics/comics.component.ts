@@ -35,6 +35,7 @@ export class ComicsComponent implements OnInit {
             .subscribe(
                 success => {
                     this.comics$ = of(success);
+                    this.totalElements = this.serviceComics.getTotalElements();
                 },
                 error => {
                     console.error(error);
@@ -43,5 +44,10 @@ export class ComicsComponent implements OnInit {
                     // Tirar o loading
                 }
             );
+    }
+
+    loadPage(page: number) {
+        this.page = page;
+        this.findAll();
     }
 }
