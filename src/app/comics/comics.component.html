@@ -10,4 +10,12 @@
             </app-comic-card>
         </div>
     </div>
+
+    <custom-pagination *ngIf="promotions.comics > 0 " 
+        [collectionSize]="totalElements" 
+        [pageSize]="itemsPerPage"
+        [currentPage]="page" 
+        (pageChange)="loadPage($event)"
+    >
+    </custom-pagination>
 </div>
