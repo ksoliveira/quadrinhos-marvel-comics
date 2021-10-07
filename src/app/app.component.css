@@ -1,59 +1,84 @@
-#marvel-comming-soon {
-    padding: 50px 20px;
+#main {
+    display: grid;
+    max-height: 100vh;
+    grid-template-columns: minmax(100%, 100%);
+    grid-template-rows: 90px auto 50px;
+    height: 100vh;
 }
 
-#marvel-comming-soon h1 {
-    font-size: 36px;
-    line-height: 40px;
-    font-weight: 700;
+#main header {
+    display: grid;
+    grid-template-columns: 140px auto;
+    width: 100%;
+    padding: 20px;
+    height: 90px;
+    border-bottom: 1px solid #212121;
+}
+
+#main nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: flex-end;
+}
+
+#main nav ul li {
+    padding-left: 15px;
+}
+
+#main > section {
+    overflow: auto;
+}
+
+#main footer {
+    width: 100%;
+    padding: 20px;
+    border-top: 1px solid #212121;
+    height: 50px;
+}
+
+#main footer p {
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 10px;
+    color: #CCCCCC;
+}
+
+.header-button {
+    border: none;
+    background-color: transparent;
+    border: 1px solid #FFFFFF;
     color: #FFFFFF;
-    text-align: center;
+    padding: 18px 20px;
+    font-size: 14px;
+    line-height: 14px;
     text-transform: uppercase;
-    font-family: 'RobotoCondensed', Arial, Helvetica, sans-serif;
-    margin: 50px 0 0;
+    font-family: 'RobotoCondensed';
+    cursor: pointer;
 }
 
-#marvel-comming-soon .marvel-logo {
-    text-align: center;
+.header-button:hover,
+.header-button.active {
+    background-color: #ee4a33;
+    border-color: #ee4a33;
 }
 
-
-.available-date {
-    font-size: 16px;
-    line-height: 20px;
-    font-family: 'RobotoCondensed', Arial, Helvetica, sans-serif;
-    text-transform: uppercase;
-    color: #fff;
-    margin: 36px 0;
-    position: absolute;
-    width: 200px;
-    bottom: 30px;
-    left: 50%;
-    margin-left: -100px;
-    text-align: center;
+.header-button:focus {
+    outline: none;
 }
 
-.available-date:after,.available-date:before {
-    background-color: #c6a972;
-    content: "";
-    display: block;
-    height: 2px;
-    position: absolute;
-    -webkit-transform: rotate(-45deg) skewX(45deg);
-    transform: rotate(-45deg) skewX(45deg);
-    width: 30px
-}
+@media (max-width: 480px) {
+    #main header {
+        grid-template-columns: 40px auto;
+    }
 
-.available-date:before {
-    left: 53px;
-    top: -8px;
-    -webkit-transform-origin: left bottom;
-    transform-origin: left bottom
-}
+    #main .marvel-logo svg path.p1,
+    #main .marvel-logo svg path.p2 {
+        display: none;
+    }
 
-.available-date:after {
-    left: -6px;
-    top: calc(100% + 3px);
-    -webkit-transform-origin: right top;
-    transform-origin: right top
+    #main .marvel-logo svg rect {
+        width: 37px;
+    }
 }
