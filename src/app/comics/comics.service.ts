@@ -29,6 +29,18 @@ export class ComicsService {
             }), catchError(this.handleError('find all comics', [])));
     }
 
+    findById( id: number): Observable<Comic> {
+        const comicByIdEndpoint = this.baseApiUrl + '/' + id + '?apikey=' + this.apiKey;
+
+        return this.http.get<Comic[]>(comicByIdEndpoint)
+            .pipe(map((result: any) => {
+                if (result.data && result.data.results) {
+                    return result.data.results;
+                }
+                return result;
+            }), catchError(this.handleError('find comics by id', [])));
+    }
+
     getTotalElements() {
         return this.totalElements;
     }

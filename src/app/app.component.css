@@ -1,9 +1,9 @@
 #main {
-    display: grid;
+    /* display: grid;
     max-height: 100vh;
     grid-template-columns: minmax(100%, 100%);
     grid-template-rows: 90px auto 50px;
-    height: 100vh;
+    height: 100vh; */
 }
 
 #main header {
@@ -13,10 +13,6 @@
     padding: 20px;
     height: 90px;
     border-bottom: 1px solid #212121;
-}
-
-#main > section {
-    padding: 20px;
 }
 
 #main nav ul {
