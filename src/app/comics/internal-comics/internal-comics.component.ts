@@ -72,12 +72,13 @@ export class InternalComicsComponent implements OnInit {
 
     setThumbnail() {
         if(this.comic.thumbnail) {
-        this.thumbnail = this.comic.thumbnail;
+            this.thumbnail = this.comic.thumbnail;
         }
     }
 
     getThumbnailPath() {
-        let thumbnailPath = this.thumbnail.path && 
+        let thumbnailPath = this.thumbnail &&
+                            this.thumbnail.path && 
                             this.thumbnail.extension &&
                             this.thumbnail.path.indexOf('image_not_available') < 0 ? 
                                 this.thumbnail.path + '.' + this.thumbnail.extension :

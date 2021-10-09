@@ -17,18 +17,6 @@ export class ComicResolverGuard implements Resolve<Comic> {
             return this.service.findById(route.params['id']);
         }
 
-        // return of({
-        //     code: null,
-        //     name: null,
-        //     openDate: null,
-        //     closeDate: null,
-        //     status: {
-        //         description: null
-        //     },
-        //     type: {
-        //         id: null,
-        //         description: null
-        //     }
-        // });
+        return of(new Comic());
     }
 }

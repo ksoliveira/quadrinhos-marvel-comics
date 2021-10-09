@@ -9,4 +9,5 @@ export class Comic {
   thumbnail: Image;
   creators: Creators;
   dates: ComicDate[];
+  description: string;
 }
