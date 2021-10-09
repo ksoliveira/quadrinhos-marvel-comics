@@ -12,6 +12,7 @@ import { Image } from '../objects/image';
 export class ComicCardComponent implements OnInit {
 
   @Input() title: string;
+  @Input() id: string;
   @Input() images: Image[];
   @Input() thumbnail: Image;
   @Input() creators: Creators;

@@ -1,0 +1,51 @@
+<div class="back-navigation-wrap">
+    <div class="back-navigation">
+        <button 
+            class="btn-back"
+            type="button"
+            routerLink="/comics"
+        >BACK TO LIST</button>
+    </div>
+</div>
+
+<div class="grid-container" *ngIf="comic">
+    <div class="background-wrap" style="background-image: url('{{getThumbnailPath()}}')"></div>
+    <h1 class="module-header small">{{comic.title}}</h1>
+    <div class="featured-item-info-wrap">
+        <div class="featured-item-info">
+            <div class="row-item comic-item">
+                <div class="row-item-image">
+                    <img
+                        class="frame-img"
+                        alt=""
+                        title=""
+                        src="{{getThumbnailPath()}}"
+                    />
+                </div>
+            </div>
+
+            <div class="featured-item-text">
+                <h1 class="module-header large">{{comic.title}}</h1>
+                <div class="featured-item-meta">
+                    <div *ngIf="publishedDate">
+                        <strong>Published:</strong>
+                        <div>{{publishedDate | date:'longDate'}}</div>
+                    </div>
+
+                    <ul class="creatorList" *ngIf="groupedCreators">
+                        <li *ngFor="let groupedCreator of groupedCreators | keyvalue ">
+                            <div><strong>{{groupedCreator.key}}:</strong></div>
+                            <div *ngFor="let creator of groupedCreator.value">
+                                {{creator.name}}
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="featured-item-desc" *ngIf="comic.description">
+                    <p>{{comic.description}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
