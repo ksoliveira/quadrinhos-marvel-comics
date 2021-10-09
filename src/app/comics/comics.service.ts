@@ -34,8 +34,11 @@ export class ComicsService {
 
         return this.http.get<Comic[]>(comicByIdEndpoint)
             .pipe(map((result: any) => {
-                if (result.data && result.data.results) {
-                    return result.data.results;
+                if (result.data && 
+                    result.data.results && 
+                    result.data.results.length > 0) 
+                {
+                    return result.data.results[0];
                 }
                 return result;
             }), catchError(this.handleError('find comics by id', [])));

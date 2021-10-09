@@ -1,5 +1,5 @@
-<div class="back-navigation">
-    <div class="back-navigation-wrap">
+<div class="back-navigation-wrap">
+    <div class="back-navigation">
         <button 
             class="btn-back"
             type="button"
@@ -7,11 +7,10 @@
         >BACK TO LIST</button>
     </div>
 </div>
-<div class="grid-container">
-    <div class="background-wrap" style="background-image: url('https://i.annihil.us/u/prod/marvel/i/mg/f/20/4bc69f33cafc0/detail.jpg')">
 
-    </div>
-    <h1 class="module-header small">Ant-Man (2003) #2</h1>
+<div class="grid-container" *ngIf="comic">
+    <div class="background-wrap" style="background-image: url('{{getThumbnailPath()}}')"></div>
+    <h1 class="module-header small">{{comic.title}}</h1>
     <div class="featured-item-info-wrap">
         <div class="featured-item-info">
             <div class="row-item comic-item">
@@ -20,58 +19,33 @@
                         class="frame-img"
                         alt=""
                         title=""
-                        src="https://i.annihil.us/u/prod/marvel/i/mg/f/20/4bc69f33cafc0/detail.jpg"
+                        src="{{getThumbnailPath()}}"
                     />
                 </div>
             </div>
 
             <div class="featured-item-text">
-                <h1 class="module-header large">Ant-Man (2003) #2</h1>
+                <h1 class="module-header large">{{comic.title}}</h1>
                 <div class="featured-item-meta">
-                <div>
-                    <strong>Published:</strong>
-                </div>
-                <div>December 31, 2029</div>
-                    <ul class="creatorList">
-                        <li>
-                            <div><strong>Writer:</strong></div>
-                            <div>
-                                <a href="https://www.marvel.com/comics/creators/344/daniel_way"
-                                >Daniel Way</a
-                                >
-                            </div>
-                        </li>
-                        <li>
-                            <div><strong>Penciller:</strong></div>
-                            <div>
-                                <a
-                                href="https://www.marvel.com/comics/creators/600/clayton_crain"
-                                >Clayton Crain</a
-                                >
-                            </div>
-                        </li>
-                        <li>
-                            <div><strong>Cover Artist:</strong></div>
-                            <div>
-                                <a
-                                href="https://www.marvel.com/comics/creators/600/clayton_crain"
-                                >Clayton Crain</a
-                                >
+                    <div *ngIf="publishedDate">
+                        <strong>Published:</strong>
+                        <div>{{publishedDate | date:'longDate'}}</div>
+                    </div>
+
+                    <ul class="creatorList" *ngIf="groupedCreators">
+                        <li *ngFor="let groupedCreator of groupedCreators | keyvalue ">
+                            <div><strong>{{groupedCreator.key}}:</strong></div>
+                            <div *ngFor="let creator of groupedCreator.value">
+                                {{creator.name}}
                             </div>
                         </li>
                     </ul>
                 </div>
 
-                <div class="featured-item-desc">
-                    <p>
-                        Ant-Man digs deeper to find out who is leaking secret information
-                        that threatens our national security. 32 pgs./PARENTAL
-                        ADVISORY...$2.99
-                    </p>
+                <div class="featured-item-desc" *ngIf="comic.description">
+                    <p>{{comic.description}}</p>
                 </div>
             </div>
         </div>
-        <!-- /featured-item-info -->
     </div>
-    <!-- /featured-item-info-wrap -->
 </div>
