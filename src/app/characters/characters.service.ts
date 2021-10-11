@@ -31,7 +31,7 @@ export class CharactersService {
             }), catchError(this.handleError('find characters by name', [])));
     }
 
-    findComicsFromCharacter( characterId: number): Observable<Comic[]> {
+    findComicsByCharacterId( characterId: number): Observable<Comic[]> {
         const comicsByCharaterEndpoint = this.baseApiUrl + '/' + characterId + '/comics?apikey=' + this.apiKey;
 
         return this.http.get<Comic[]>(comicsByCharaterEndpoint)

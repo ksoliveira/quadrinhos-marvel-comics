@@ -84,9 +84,25 @@ export class ComicsComponent implements OnInit {
     }
 
     loadComicsByCharacter(characterId: number) {
-        console.log(characterId);
-
+        this.findComicsByCharacterId(characterId);
         this.characters$ = of();
+    }
+
+    findComicsByCharacterId(characterId: number): void {
+        this.showComicsLoading();
+        this.serviceCharacters.findComicsByCharacterId(characterId)
+            .subscribe(
+                success => {
+                    this.comics$ = of(success);
+                    this.totalElements = this.serviceComics.getTotalElements();
+                },
+                error => {
+                    console.error(error);
+                },
+                () => {
+                    this.hideComicsLoading();
+                }
+            );
     }
 
 
