@@ -17,6 +17,48 @@
     color: #FFFFFF;
 }
 
+.search-form-container {
+    width: 100%;
+    max-width: 1400px;
+    padding: 20px;
+    margin: 0 auto;
+}
+
+.characters-container{    
+    width: 100%;
+    max-width: 1400px;
+    padding: 0 20px;
+    margin: 0 auto;
+
+    max-height: 293px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+
+.search-form-container input {
+    width: 100%;
+    border: none;
+    height: 35px;
+    line-height: 35px;
+    font-size: 16px;
+    color: #000000;
+    padding: 0 10px;
+}
+
+.character-item {
+    background-color: #FFFFFF;
+    color: #000000;
+    padding: 10px 20px;
+    border-top: 1px solid #666666;
+    font-size: 14px;
+    line-height: 18px;
+    cursor: pointer;
+}
+
+.character-item:hover {
+    background-color: #efefef;
+}
+
 @media (max-width: 1200px) {
     #page-container {
         grid-template-columns: repeat(4, 1fr);

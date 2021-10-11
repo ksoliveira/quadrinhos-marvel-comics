@@ -1,7 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { BehaviorSubject, Observable, of } from 'rxjs';
+import { BehaviorSubject, interval, Observable, of } from 'rxjs';
 import { Comic } from './objects/comic';
 import { ComicsService } from './comics.service';
+import { debounce } from 'rxjs/internal/operators';
+import { CharactersService } from '../characters/characters.service';
+import { Character } from '../characters/character';
+import { FormBuilder, FormGroup } from '@angular/forms';
+import { convertCompilerOptionsFromJson } from 'typescript';
 
 @Component({
     selector: 'app-comics',
@@ -10,6 +15,7 @@ import { ComicsService } from './comics.service';
 })
 export class ComicsComponent implements OnInit {
     comics$: Observable<Comic[]>;
+    characters$: Observable<Character[]>;
 
     itemsPerPage = 10;
     totalElements: number;
@@ -18,18 +24,74 @@ export class ComicsComponent implements OnInit {
     private _loading = new BehaviorSubject<boolean>(false);
     public readonly loading$ = this._loading.asObservable();
 
+    private _loadingCharacter = new BehaviorSubject<boolean>(false);
+    public readonly loadingCharacter$ = this._loadingCharacter.asObservable();
+
+    private _foundCharacter = new BehaviorSubject<boolean>(false);
+    public readonly foundCharacter$ = this._foundCharacter.asObservable();
+
+    private _fieldChanged = new BehaviorSubject<boolean>(false);
+    public readonly fieldChanged$ = this._fieldChanged = new BehaviorSubject<boolean>(false);
+
+
+
+    defaultSearchForm: FormGroup;
+
     constructor(
-        private serviceComics: ComicsService
-    ) { }
+        private serviceComics: ComicsService,
+        private serviceCharacters: CharactersService,
+        private fb: FormBuilder
+    ) {
+        this.fieldChanged$.pipe(debounce(() => interval(600)))
+            .subscribe(() => {
+                this.showCharactersLoading();
+                this.findCharachter();
+            });
+    }
 
     ngOnInit(): void {
+        this.initDefaultSearchForm();
 
         this.findAll();
     }
 
+    private initDefaultSearchForm() {
+        this.defaultSearchForm = this.fb.group({
+            name: ['']
+        });
+    }
+
+    findCharachter(): void {
+        this.showCharactersLoading();
+        const characterName = this.defaultSearchForm.get('name').value;
+
+        this.serviceCharacters.findByName( characterName )
+            .subscribe(
+                success => {
+                    this.characters$ = of(success);
+                },
+                error => {
+                    console.error(error);
+                },
+                () => {
+                    this.hideCharactersLoading();
+                }
+            );
+    }
+
+    onChange() {
+        this.fieldChanged$.next(true);
+    }
+
+    loadComicsByCharacter(characterId: number) {
+        console.log(characterId);
+
+        this.characters$ = of();
+    }
+
 
     findAll(): void {
-        this.showLoading();
+        this.showComicsLoading();
         this.serviceComics.findAll(this.page, this.itemsPerPage)
             .subscribe(
                 success => {
@@ -40,17 +102,33 @@ export class ComicsComponent implements OnInit {
                     console.error(error);
                 },
                 () => {
-                    this.hideLoading();
+                    this.hideComicsLoading();
                 }
             );
     }
 
-    showLoading() {
+    showComicsLoading() {
         this._loading.next(true);
     }
 
-    hideLoading() {
+    hideComicsLoading() {
         this._loading.next(false);
+    }
+
+    showCharactersLoading() {
+        this._loadingCharacter.next(true);
+    }
+
+    hideCharactersLoading() {
+        this._loadingCharacter.next(false);
+    }
+
+    foundCharacter() {
+        this._foundCharacter.next(true);
+    }
+
+    notFoundCharacter() {
+        this._foundCharacter.next(false);
     }
     
     loadPage(page: number) {
