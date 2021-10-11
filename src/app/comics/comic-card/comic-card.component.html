@@ -7,10 +7,14 @@
 
     <section class="carousel" aria-label="Gallery" *ngIf="images$ | async as images;">
         <ol class="carousel__viewport">
-            <li id="carousel__slide1"
-                tabindex="0"
-                class="carousel__slide" *ngFor="let image of images">
+            <li class="carousel__slide" 
+                *ngFor="let image of images">
                 <img src="{{image.path}}.{{image.extension}}" />
+                <div class="carousel__snapper"></div>
+            </li>
+
+            <li class="carousel__slide" *ngIf="images.length == 0" >
+                <img src="/assets/img/image-not-found.jpg" />
                 <div class="carousel__snapper"></div>
             </li>
         </ol>

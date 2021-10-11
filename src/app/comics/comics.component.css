@@ -16,3 +16,27 @@
     line-height: 18px;
     color: #FFFFFF;
 }
+
+@media (max-width: 1200px) {
+    #page-container {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+@media (max-width: 940px) {
+    #page-container {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (max-width: 600px) {
+    #page-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 480px) {
+    #page-container {
+        grid-template-columns: repeat(1, 1fr);
+    }
+}
