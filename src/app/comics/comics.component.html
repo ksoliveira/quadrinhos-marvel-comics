@@ -1,43 +1,50 @@
 <div class="comic-loading" *ngIf="loading$ | async">
     Loading comics
 </div>
-<div class="search-form-container">
-    <form novalidate [formGroup]="defaultSearchForm">
-        <input 
-            (ngModelChange)="onChange()" 
-            autocomplete="off"
-            type="text" 
-            class="form-control" 
-            formControlName="name" 
-            name="name" 
-            placeholder="Character name" />
-    </form>
-</div>
-<div class="comic-loading" *ngIf="loadingCharacter$ | async">
-    Loading Characters
-</div>
-<div class="characters-container" *ngIf="!(loading$ | async) && (characters$ | async) as characters">
-    <div class="character-item" *ngFor="let character of characters" (click)="loadComicsByCharacter(character.id)">
-        {{character.name}}
-    </div>
-</div>
-<div id="page-container" *ngIf="!(loading$ | async) && (comics$ | async) as comics">
 
-    <div *ngFor="let comic of comics">
-        <div routerLink='/comics/{{comic.id}}'>
-            <app-comic-card
-                [id]=comic.id
-                [title]=comic.title
-                [images]=comic.images
-                [thumbnail]=comic.thumbnail
-                [creators]=comic.creators
-            >
-            </app-comic-card>
+<div *ngIf="!(loading$ | async) && (comics$ | async) as comics">
+
+    <div class="up-page-container">
+        <div class="search-form-container">
+            <form novalidate [formGroup]="defaultSearchForm">
+                <input 
+                    (ngModelChange)="onChange()" 
+                    autocomplete="off"
+                    type="text" 
+                    class="form-control" 
+                    formControlName="name" 
+                    name="name" 
+                    placeholder="Character name" />
+            </form>
+        </div>
+        <div class="comic-loading" *ngIf="loadingCharacter$ | async">
+            Loading Characters
+        </div>
+        <div class="characters-container" *ngIf="!(loading$ | async) && (characters$ | async) as characters">
+            <div class="character-item" *ngFor="let character of characters" (click)="loadComicsByCharacter(character.id)">
+                {{character.name}}
+            </div>
+        </div>
+    </div>
+
+    <div  id="page-container">
+
+        <div *ngFor="let comic of comics">
+            <div routerLink='/comics/{{comic.id}}'>
+                <app-comic-card
+                    [id]=comic.id
+                    [title]=comic.title
+                    [images]=comic.images
+                    [thumbnail]=comic.thumbnail
+                    [creators]=comic.creators
+                >
+                </app-comic-card>
+
         </div>
     </div>
 </div>
 
-<app-custom-pagination *ngIf="!(loading$ | async)"
+<app-custom-pagination *ngIf="!(loading$ | async) && !(listedByCharacterId$ | async)                                                                                                                                                                                                                                                                             "
     [collectionSize]="totalElements" 
     [pageSize]="itemsPerPage"
     [currentPage]="page" 

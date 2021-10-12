@@ -9,7 +9,7 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import { convertCompilerOptionsFromJson } from 'typescript';
 
 @Component({
-    selector: 'app-comics',
+    selector: 'app-comics', 
     templateUrl: './comics.component.html',
     styleUrls: ['./comics.component.css']
 })
@@ -27,8 +27,9 @@ export class ComicsComponent implements OnInit {
     private _loadingCharacter = new BehaviorSubject<boolean>(false);
     public readonly loadingCharacter$ = this._loadingCharacter.asObservable();
 
-    private _foundCharacter = new BehaviorSubject<boolean>(false);
-    public readonly foundCharacter$ = this._foundCharacter.asObservable();
+    private _listedByCharacterId = new BehaviorSubject<boolean>(false);
+    public readonly listedByCharacterId$ = this._listedByCharacterId.asObservable();
+
 
     private _fieldChanged = new BehaviorSubject<boolean>(false);
     public readonly fieldChanged$ = this._fieldChanged = new BehaviorSubject<boolean>(false);
@@ -85,6 +86,7 @@ export class ComicsComponent implements OnInit {
 
     loadComicsByCharacter(characterId: number) {
         this.findComicsByCharacterId(characterId);
+        this.listedByCharacterId();
         this.characters$ = of();
     }
 
@@ -94,7 +96,7 @@ export class ComicsComponent implements OnInit {
             .subscribe(
                 success => {
                     this.comics$ = of(success);
-                    this.totalElements = this.serviceComics.getTotalElements();
+                    this.totalElements = this.  serviceComics.getTotalElements();
                 },
                 error => {
                     console.error(error);
@@ -139,12 +141,12 @@ export class ComicsComponent implements OnInit {
         this._loadingCharacter.next(false);
     }
 
-    foundCharacter() {
-        this._foundCharacter.next(true);
+    listedByCharacterId() {
+        this._listedByCharacterId.next(true);
     }
 
-    notFoundCharacter() {
-        this._foundCharacter.next(false);
+    isNotListedByCharacterId() {
+        this._listedByCharacterId.next(false);
     }
     
     loadPage(page: number) {
