@@ -30,16 +30,16 @@
     <div  id="page-container">
 
         <div *ngFor="let comic of comics">
-            <div routerLink='/comics/{{comic.id}}'>
+            <div>
                 <app-comic-card
                     [id]=comic.id
                     [title]=comic.title
                     [images]=comic.images
                     [thumbnail]=comic.thumbnail
                     [creators]=comic.creators
+                    (clickSeeMore)="seeMore(comic.id)"
                 >
                 </app-comic-card>
-
         </div>
     </div>
 </div>

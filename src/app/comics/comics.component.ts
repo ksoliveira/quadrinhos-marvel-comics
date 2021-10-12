@@ -7,6 +7,7 @@ import { CharactersService } from '../characters/characters.service';
 import { Character } from '../characters/character';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { convertCompilerOptionsFromJson } from 'typescript';
+import { Router } from '@angular/router';
 
 @Component({
     selector: 'app-comics', 
@@ -41,7 +42,8 @@ export class ComicsComponent implements OnInit {
     constructor(
         private serviceComics: ComicsService,
         private serviceCharacters: CharactersService,
-        private fb: FormBuilder
+        private fb: FormBuilder,
+        private router: Router
     ) {
         this.fieldChanged$.pipe(debounce(() => interval(600)))
             .subscribe(() => {
@@ -152,5 +154,9 @@ export class ComicsComponent implements OnInit {
     loadPage(page: number) {
         this.page = page;
         this.findAll();
+    }
+
+    seeMore(comicId: number) {
+        this.router.navigateByUrl('/comics/' + comicId);
     }
 }
