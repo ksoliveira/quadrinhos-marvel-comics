@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { Creator } from '../objects/creator';
 import { Creators } from '../objects/creators';
@@ -17,6 +17,9 @@ export class ComicCardComponent implements OnInit {
   @Input() thumbnail: Image;
   @Input() creators: Creators;
 
+  @Output() clickSeeMore = new EventEmitter();
+
+
   images$: Observable<Image[]>;
   creators$: Observable<Creator[]>
 
@@ -34,5 +37,9 @@ export class ComicCardComponent implements OnInit {
       this.creators$ = of(this.creators.items);
     }
     this.images$ = of(this.images);
+  }
+
+  onCLickSeeMore() {
+    this.clickSeeMore.emit();
   }
 }
