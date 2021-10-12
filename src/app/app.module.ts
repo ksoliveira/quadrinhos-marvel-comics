@@ -9,6 +9,7 @@ import { FavoritesComponent } from './comics/favorites/favorites.component';
 import { ComicCardComponent } from './comics/comic-card/comic-card.component';
 import { CustomPaginationComponent } from './comics/custom-pagination/custom-pagination.component';
 import { InternalComicsComponent } from './comics/internal-comics/internal-comics.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,9 @@ import { InternalComicsComponent } from './comics/internal-comics/internal-comic
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
