@@ -1,1 +1,19 @@
-<p>favorites works!</p>
+<div *ngIf="favorites$ | async as favorites">
+    <div  id="page-container">
+
+        <div *ngFor="let favorite of favorites">
+            <div>
+                <app-comic-card
+                    [id]=favorite.id
+                    [title]=favorite.title
+                    [images]=favorite.images
+                    [thumbnail]=favorite.thumbnail
+                    [creators]=favorite.creators
+                    (clickSeeMore)="seeMore(favorite.id)"
+                    (clickAddToFavorite)="addToFavorite(favorite)"
+                >
+                </app-comic-card>
+        </div>
+    </div>
+</div>
+
