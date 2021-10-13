@@ -2,12 +2,13 @@ import { Component, OnInit } from '@angular/core';
 import { BehaviorSubject, interval, Observable, of } from 'rxjs';
 import { Comic } from './objects/comic';
 import { ComicsService } from './comics.service';
-import { debounce } from 'rxjs/internal/operators';
+import { debounce, map } from 'rxjs/internal/operators';
 import { CharactersService } from '../characters/characters.service';
 import { Character } from '../characters/character';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { convertCompilerOptionsFromJson } from 'typescript';
 import { Router } from '@angular/router';
+import { Store } from '@ngrx/store';
+import { actionAddFavorite, IFavoriteState } from '../store/favorite.state';
 
 @Component({
     selector: 'app-comics', 
@@ -36,14 +37,16 @@ export class ComicsComponent implements OnInit {
     public readonly fieldChanged$ = this._fieldChanged = new BehaviorSubject<boolean>(false);
 
 
-
     defaultSearchForm: FormGroup;
+
+    favorites$:Observable<Comic[]>;
 
     constructor(
         private serviceComics: ComicsService,
         private serviceCharacters: CharactersService,
         private fb: FormBuilder,
-        private router: Router
+        private router: Router,
+        private favoriteStore: Store<{ favorite: IFavoriteState}>
     ) {
         this.fieldChanged$.pipe(debounce(() => interval(600)))
             .subscribe(() => {
@@ -53,6 +56,11 @@ export class ComicsComponent implements OnInit {
     }
 
     ngOnInit(): void {
+        this.favorites$ = this.favoriteStore
+            .select('favorite')
+            .pipe(
+                map(e => e.favorites)
+            )
         this.initDefaultSearchForm();
 
         this.findAll();
@@ -159,4 +167,10 @@ export class ComicsComponent implements OnInit {
     seeMore(comicId: number) {
         this.router.navigateByUrl('/comics/' + comicId);
     }
+
+    addToFavorite(favorite: Comic) {
+        
+        this.favoriteStore.dispatch(actionAddFavorite({favorites: [favorite]}))
+    }
+
 }

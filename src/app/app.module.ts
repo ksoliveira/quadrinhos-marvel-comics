@@ -10,6 +10,10 @@ import { ComicCardComponent } from './comics/comic-card/comic-card.component';
 import { CustomPaginationComponent } from './comics/custom-pagination/custom-pagination.component';
 import { InternalComicsComponent } from './comics/internal-comics/internal-comics.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { StoreModule } from '@ngrx/store';
+import { environment } from '../environments/environment';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { favoriteReducer } from './store/favorite.state';
 
 @NgModule({
   declarations: [
@@ -25,7 +29,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    StoreModule.forRoot({favorite: favoriteReducer}),
+    StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production })
   ],
   providers: [],
   bootstrap: [AppComponent]

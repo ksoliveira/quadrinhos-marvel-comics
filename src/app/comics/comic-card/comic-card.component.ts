@@ -18,6 +18,7 @@ export class ComicCardComponent implements OnInit {
   @Input() creators: Creators;
 
   @Output() clickSeeMore = new EventEmitter();
+  @Output() clickAddToFavorite = new EventEmitter();
 
 
   images$: Observable<Image[]>;
@@ -39,7 +40,11 @@ export class ComicCardComponent implements OnInit {
     this.images$ = of(this.images);
   }
 
-  onCLickSeeMore() {
+  onClickSeeMore() {
     this.clickSeeMore.emit();
+  }
+
+  onClickAddToFavorite() {
+    this.clickAddToFavorite.emit();
   }
 }
